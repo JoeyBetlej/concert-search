@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin');
+body {
+  font-family: 'Cabin', sans-serif;
+}
+.container {
+  background-color: #EEEEEE;
+  color: #111111;
+}
+
+.glyphicon {
+  line-height: inherit;
+}
+
+.list {
+  padding-top: 15px;
+}
+
+.list-group-item:nth-child(even) {
+    background-color: #CCCCCC;
+}
+
+.list-group-item:nth-child(odd) {
+    background-color: #DDDDDD;
+}
+
+.padding-sm-vertical {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
