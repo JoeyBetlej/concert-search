@@ -16,7 +16,7 @@ $(function() {
     $('.list-group').html('');
     $('#err').hide();
     if($("#search-input").val()) {
-      $.get('/get?artist=' + $("#search-input").val(), function(data) {
+      $.get('/get?artist=' + encodeURIComponent($("#search-input").val()), function(data) {
         if (data.html) {
           $('.list-group').html(data.html);
         } else if (data.err) {

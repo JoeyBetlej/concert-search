@@ -22,7 +22,7 @@ app.get('/get', (req, res) => {
 			return res.send({err: 'Please enter artist name.'})
 		}
 		const data = await request({
-			uri: `https://rest.bandsintown.com/artists/${req.query.artist}/events`,
+			uri: `https://rest.bandsintown.com/artists/${encodeURIComponent(req.query.artist)}/events`,
 			qs: {
 				app_id: 'nm-example',
 			},
