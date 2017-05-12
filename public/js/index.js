@@ -16,7 +16,7 @@ $(function() {
     $('.list-group').html('');
     $('#err').hide();
     if($("#search-input").val()) {
-      $.get('/get?artist=' + encodeURIComponent($("#search-input").val()), function(data) {
+      $.get('/get?artist=' + encodeURIComponent($("#search-input").val()), function (data) {
         if (data.html) {
           $('.list-group').html(data.html);
         } else if (data.err) {
@@ -26,10 +26,13 @@ $(function() {
           $('#err').show();
           $('.alert').html('Server error.')
         }
+      }).fail(function () {
+        $('#err').show();
+        $('.alert').html('Failed to connect to server.');
       });
     } else {
       $('#err').show();
-      $('.alert').html('Search field must not be empty.')
+      $('.alert').html('Search field must not be empty.');
     }
   }
 });
