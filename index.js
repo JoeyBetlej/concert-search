@@ -36,7 +36,7 @@ app.get('/get', (req, res) => {
 		}
 		let html='';
 		for (const item of data) {
-			html += `<a href="${item.url}" class="list-group-item">${moment(item.datetime).format("dddd, MMMM Do YYYY, h:mm a")} - ${item.venue.name} - ${item.venue.city}, ${item.venue.region}</a>`
+			html += `<a href="${item.url}" class="list-group-item">${moment(item.datetime).format("dddd, MMMM Do YYYY, h:mm a")} - ${item.venue.name} - ${item.venue.city}, ${item.venue.region || item.venue.country}</a>`
 		}
 		res.send({html});
 	})().catch((ex) => res.send({err: ex.message || ex.name || ex}));
