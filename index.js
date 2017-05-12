@@ -7,9 +7,15 @@ const moment = require('moment');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-	res.sendFile(path.join(`${__dirname}/index.html`));
+	res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+/**
+ * Retrieves a list of upcoming concerts from the specified artist
+ * uses Bandsintown public api
+ * @param {string} req.query.artist - name of artist to return list of concerts
+ * @return {Object} html list of links to concerts or error string
+ */
 app.get('/get', (req, res) => {
 	(async function get() {
 		if (!req.query.artist) {
@@ -33,9 +39,7 @@ app.get('/get', (req, res) => {
 			html += `<a href="${item.url}" class="list-group-item">${moment(item.datetime).format("dddd, MMMM Do YYYY, h:mm a")} - ${item.venue.name} - ${item.venue.city}, ${item.venue.region}</a>`
 		}
 		res.send({html});
-	})().catch((ex) => {
-		console.log(ex)
-		return res.send({err: ex.message || ex.name || ex})})
+	})().catch((ex) => res.send({err: ex.message || ex.name || ex}));
 });
 
 app.listen(3000, () => {

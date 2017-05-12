@@ -1,17 +1,22 @@
 $(function() {
+
   $('#search-btn').on("click", getData);
+
   $("#search-input").keypress(function (event) {
-    if(event.which == 13) {
+    if(event.which == 13) { // Enter key
       getData();
     }
   });
 
+  /**
+   * Triggers an ajax call to the server which retrieves the list of concerts
+   * for the artist entered into the text field.
+   */
   function getData() {
     $('.list-group').html('');
     $('#err').hide();
     if($("#search-input").val()) {
       $.get('/get?artist=' + $("#search-input").val(), function(data) {
-        console.log(data.err)
         if (data.html) {
           $('.list-group').html(data.html);
         } else if (data.err) {

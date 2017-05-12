@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Cabin');
 body {
   font-family: 'Cabin', sans-serif;
-}
-.container {
   background-color: #EEEEEE;
   color: #111111;
 }
